@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Precios de tus mejores guitarras</title>
+    <link rel="stylesheet" href="./css/fonts.css">
+		<link
+			href="https://fonts.googleapis.com/css2?family=Allerta&family=Montserrat:wght@400;700&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="./css/style.css" />
+  </head>
+<body id="body">
+
+  <div class="background">
+    <header class="header wrapper" id="header">
+      <figure class="header__logo">
+        <img src="/images/invie.png" alt="Invie logo" width="186" height="60" />
+      </figure>
+			<i class="burger-button icon-menu" id="burger-button"></i>
+      <nav class="header__menu" id="menu">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#guitars" id="guitars">Guitarras</a></li>
+          <li><a href="prices.html">Precios</a></li>
+        </ul>
+      </nav>
+    </header>
+  </div>
+
+  <section class="table">
+    <div class="wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Modelo</th>
+            <th>Precio</th>
+            <th>Descripción</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Invie Acústica</td>
+            <td>$ 100.000</td>
+            <td>Una guitarra muy pro</td>
+          </tr>
+          <tr>
+            <td>Invie Classic</td>
+            <td>$ 100.000</td>
+            <td>Una guitarra muy pro</td>
+          </tr>
+          <tr>
+            <td>Invie Custom</td>
+            <td>$ 100.000</td>
+            <td>Una guitarra muy pro</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer class="footer" id="footer">
+    <div class="wrapper">
+      <div class="contact__details">
+        <img src="/images/invie-white.png" alt="Invie logo" />
+        <a href="tel:+573001110000"
+          ><strong>Teléfono</strong><span>300 111 0000</span></a
+        >
+        <a href="mailto:info@invie.com"
+          ><strong>Email</strong><span>info@invie.com</span></a
+        >
+      </div>
+
+      <form action="" class="contact__form">
+        <div class="column1">
+          <label for="name">Nombre</label>
+          <input type="text" name="name" id="name" required />
+          <label for="email">Correo</label>
+          <input type="email" name="email" id="email" required />
+
+          <div class="gender">
+            <label for="female">
+              <input
+                type="radio"
+                name="gender"
+                id="female"
+                value="mujer"
+                required
+                checked
+              />
+              Mujer
+            </label>
+            <label for="male">
+              <input
+                type="radio"
+                name="gender"
+                id="male"
+                value="hombre"
+                required
+              />
+              Hombre
+            </label>
+          </div>
+
+          <div class="checkbox">
+            <label for="quote">
+              <input
+                type="checkbox"
+                name="subject"
+                id="quote"
+                value="cotizacion"
+                required
+                checked
+              />
+              Cotización
+            </label>
+            <label for="claim">
+              <input
+                type="checkbox"
+                name="subject"
+                id="claim"
+                value="reclamos"
+                required
+              />
+              Reclamos
+            </label>
+            <label for="comment">
+              <input
+                type="checkbox"
+                name="subject"
+                id="comment"
+                value="comentarios"
+                required
+              />
+              Comentarios
+            </label>
+            <label for="other">
+              <input
+                type="checkbox"
+                name="subject"
+                id="other"
+                value="otros"
+                required
+              />
+              Otros
+            </label>
+          </div>
+        </div>
+
+        <div class="column2">
+          <label for="message">
+            Comentarios
+          </label>
+          <textarea
+            name="message"
+            id="message"
+            cols="30"
+            rows="7"
+            spellcheck="true"
+            required
+          ></textarea>
+          <button type="submit" class="button">Enviar</button>
+        </div>
+      
+      
+      
+      </form>
+      </div>
+    </div>
+  </footer>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"></script>
+  <script>
+    const screenSize = window.matchMedia('(max-width:414px)')
+    const burgerButton = document.getElementById('burger-button')
+    const menu = document.getElementById('menu')
+    const scroll = document.getElementById('body')
+    const guitars = document.getElementById('guitar')
+    
+    function toggleMenu(){
+        menu.classList.toggle('active')
+        burgerButton.classList.toggle('icon-cancel-circle')
+        scroll.classList.toggle('opened')
+      }
+    function showMenu(){
+      menu.classList.add('active')
+      burgerButton.classList.toggle('icon-cancel-circle')
+      scroll.classList.toggle('opened')
+    }
+    function hideMenu(){
+      menu.classList.remove('active')
+      burgerButton.classList.toggle('icon-cancel-circle')
+      scroll.classList.toggle('opened')
+    }
+
+    function mediaQuery() {
+      if (screenSize.matches) {
+        burgerButton.addEventListener('touchstart', toggleMenu)
+        guitars.addEventListener('click', toggleMenu)
+        console.log(guitars)
+      } else {
+        burgerButton.removeEventListener('touchstart', toggleMenu)
+        guitars.removeEventListener('click', toggleMenu)
+      }
+    }
+
+    mediaQuery()		
+    
+    const body = document.body
+    var gestures = new Hammer(body);
+    gestures.on('swipeleft', hideMenu)
+
+    var gestures = new Hammer(body);
+    gestures.on('swiperight', showMenu)
+
+  </script>
+</body>
+</html>
