@@ -61,7 +61,7 @@ td {
 	margin: 0 auto;
 }
 .background {
-	background-image: url("/images/background.png");
+	background-image: url("../images/background.png");
 	background-size: cover;
 }
 
